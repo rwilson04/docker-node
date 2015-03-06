@@ -20,14 +20,17 @@ RUN \
   echo -e '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 RUN \
     mkdir -p /opt/node && \
+    mkdir -p /var/www/server && \
     cd /opt/node && \
     npm install -g bower && \
     npm install -g npm
 
-VOLUME /opt/node
+COPY deploy/run.sh /opt/deploy/run.sh
+
+VOLUME /var/www/server
 
 WORKDIR /opt/node
 
 EXPOSE 80
 
-CMD sh -c 'node index.js'
+CMD /bin/bash /opt/deploy/run.sh
