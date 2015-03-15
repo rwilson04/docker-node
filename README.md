@@ -7,13 +7,17 @@ Basic Node JS server template
 * Runs `node index.js` in /var/www/server by default, exposes port 80
 
 ##Onbuild
-Build an app and run it out of the box
+Build an app and run it out of the box. If build root contains app code, both can exist in the same repository.
 * base the image on shinymayhem/node:onbuild
-* Add fetch-repo.sh, which includes code needed to run app
+* Ensure `fetch-repo.sh` exists in build root. Script should include code needed to run app
     * Example
 
-    `git init
-    git remote add -t master origin http://github.com/user/repo
-    git fetch
-    git merge origin/master`
+	```bash
+	git init
+	git remote add -t master origin http://github.com/user/repo
+	git fetch
+	git merge origin/master
+	```
+
+* Ensure `package.json` file exists so that `npm install` works on build
 * Build app and run as normal
