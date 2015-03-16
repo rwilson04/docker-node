@@ -2,22 +2,14 @@
 Basic Node JS server template
 
 ##Usage
-* Access /var/www/server volume from another container, place code there
-* Node code, like express, installed to /opt/node. run.sh copies it to volume at runtime
+* Run by itself or as a parent docker image, exposes volume /var/www/server as code directory
+* Contents of /opt/node copied to volume at runtime when `run.sh` is executed
 * Runs `node index.js` in /var/www/server by default, exposes port 80
 
-##Onbuild
-Build an app and run it out of the box. If build root contains app code, both can exist in the same repository.
-* base the image on shinymayhem/node:onbuild
-* Ensure `fetch-repo.sh` exists in build root. Script should include code needed to run app
-    * Example
-
-	```bash
-	git init
-	git remote add -t master origin http://github.com/user/repo
-	git fetch
-	git merge origin/master
-	```
-
-* Ensure `package.json` file exists so that `npm install` works on build
+##`onbuild` tag
+Build an app and run it out of the box. 
+* Base the image on shinymayhem/node:onbuild
+* Place app code in `src/` at build-root
+	* Add `src/index.js`, which is run by default
+	* Add `src/package.json` for npm install, which runs during build
 * Build app and run as normal
