@@ -31,7 +31,7 @@ COPY deploy/nodemon.json /opt/node/
 
 VOLUME /var/www/
 
-WORKDIR /var/www/
+WORKDIR /opt/node
 
 ENV COPY_TO_VOLUME true
 ENV INDEX_DIR /var/www
