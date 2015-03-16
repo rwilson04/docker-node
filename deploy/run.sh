@@ -1,6 +1,6 @@
 #!/bin/bash
 #copy node modules, etc to volume the server runs from
-if [ $COPY_TO_VOLUME -eq "true" ]; then
+if [ $COPY_TO_VOLUME == "true" ]; then
 	cp -R /opt/node/. /var/www/
 fi
 
