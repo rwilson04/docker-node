@@ -21,7 +21,7 @@ RUN \
   echo -e '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 RUN \
     mkdir -p /opt/node && \
-    mkdir -p /var/www/server && \
+    mkdir -p /var/www && \
     cd /opt/node && \
     npm install -g bower && \
     npm install -g npm
@@ -29,9 +29,12 @@ RUN \
 COPY deploy/run.sh /opt/deploy/run.sh
 COPY deploy/nodemon.json /opt/node/
 
-VOLUME /var/www/server
+VOLUME /var/www/
 
-WORKDIR /opt/node
+WORKDIR /var/www/
+
+ENV COPY_TO_VOLUME true
+ENV INDEX_DIR /var/www
 
 EXPOSE 80
 

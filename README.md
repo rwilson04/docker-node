@@ -4,7 +4,9 @@ Basic Node JS server template
 ##Usage
 * Run by itself or as a parent docker image, exposes volume /var/www/server as code directory
 * Contents of /opt/node copied to volume at runtime when `run.sh` is executed
-* Runs `node index.js` in /var/www/server by default, exposes port 80
+* Runs `node index.js` in /var/www by default, exposes port 80
+* Set `COPY_TO_VOLUME` to false if contents should not be overwritten (useful in development)
+* Set `INDEX_DIR` to location of index.js, if not /var/www (useful in development)
 
 ##`onbuild` tag
 Build an app and run it out of the box. 

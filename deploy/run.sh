@@ -1,11 +1,12 @@
 #!/bin/bash
 #copy node modules, etc to volume the server runs from
-cp -R /opt/node/. /var/www/server/
-cd /var/www/server
+if [ $COPY_TO_VOLUME -eq "true" ]; then
+	cp -R /opt/node/. /var/www/
+fi
 
 if [ -f index.js ];
 then
-    nodemon index.js
+    nodemon ${INDEX_DIR}/index.js
 else
-    echo "No index.js file found"
+    echo "No index.js file found in ${INDEX_DIR}"
 fi
