@@ -17,6 +17,7 @@ RUN \
   cd /tmp && \
   rm -rf /tmp/node-v* && \
   npm install -g npm && \
+  npm install -g nodemon && \
   echo -e '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 RUN \
     mkdir -p /opt/node && \
@@ -26,6 +27,7 @@ RUN \
     npm install -g npm
 
 COPY deploy/run.sh /opt/deploy/run.sh
+COPY deploy/nodemon.json /opt/node/
 
 VOLUME /var/www/server
 
