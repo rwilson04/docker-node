@@ -4,7 +4,7 @@ if [ $COPY_TO_VOLUME == "true" ]; then
 	cp -R /opt/node/. /var/www/
 fi
 
-if [ -f index.js ];
+if [ -f ${INDEX_DIR}/index.js ];
 then
     nodemon ${INDEX_DIR}/index.js
 else
