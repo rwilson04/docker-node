@@ -27,7 +27,6 @@ RUN \
     npm install -g npm
 
 COPY deploy/run.sh /opt/deploy/run.sh
-COPY deploy/nodemon.json /opt/node/
 
 VOLUME /var/www/
 
