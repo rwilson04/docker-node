@@ -7,6 +7,8 @@ RUN \
   mkdir -p /var/www
 
 COPY deploy/run.sh /opt/deploy/run.sh
+RUN \
+	chmod +x /opt/deploy/*.sh
 
 VOLUME /var/www/
 

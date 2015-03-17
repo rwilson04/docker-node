@@ -9,7 +9,7 @@ fi
 
 if [ -f ${INDEX_DIR}/index.js ];
 then
-    cd ${INDEX_DIR}; nodemon ./index.js
+    cd ${INDEX_DIR}; nodemon --watch ${INDEX_DIR} ${INDEX_DIR}/index.js
 else
     echo "No index.js file found in ${INDEX_DIR}"
 fi
