@@ -1,3 +1,3 @@
 FROM shinymayhem/node
-ONBUILD COPY src/ /opt/node
-ONBUILD RUN cd /opt/node; npm install
+ONBUILD COPY src/ /var/www
+ONBUILD RUN cd /var/www; npm install
