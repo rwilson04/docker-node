@@ -20,8 +20,11 @@ RUN \
 
 WORKDIR /var/www/
 
+#set to effective working dir for default command (working_dir directive doesn't work in tutum)
+ENV NODE_DIR /var/www/
+
 EXPOSE 80
 
 USER node
 
-CMD npm install && authbind --deep npm start
+CMD cd $NODE_DIR && npm install && authbind --deep npm start
