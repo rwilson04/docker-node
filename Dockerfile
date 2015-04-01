@@ -18,7 +18,7 @@ RUN \
   chown -R node:node /etc/authbind/byport/ && \
   chmod -R 755 /etc/authbind/byport/
 
-COPY deploy/run.sh:/run.sh
+COPY deploy/run.sh /run.sh
 RUN chmod +x /run.sh
 
 WORKDIR /var/www/
