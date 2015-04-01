@@ -18,6 +18,9 @@ RUN \
   chown -R node:node /etc/authbind/byport/ && \
   chmod -R 755 /etc/authbind/byport/
 
+COPY deploy/run.sh:/run.sh
+RUN chmod +x /run.sh
+
 WORKDIR /var/www/
 
 #set to effective working dir for default command (working_dir directive doesn't work in tutum)
@@ -27,4 +30,4 @@ EXPOSE 80
 
 USER node
 
-CMD cd $NODE_DIR && npm install && authbind --deep npm start
+CMD ["/run.sh"]
