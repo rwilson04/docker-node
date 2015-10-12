@@ -1,4 +1,4 @@
-FROM node:0.12-slim
+FROM node:4.1.2-slim
 
 RUN \
   npm install -g bower forever nodemon grunt-cli node-inspector && \
